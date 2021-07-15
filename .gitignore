@@ -7,9 +7,9 @@ pyproject.toml
 setup.py
 output.csv
 
-codes.db
-
 example_info.txt
 
 __pycache__/
 *pyc
+
+.pytest_cache/

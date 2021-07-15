@@ -2,9 +2,21 @@
 import click
 import sqlite3
 
+
 conn = sqlite3.connect('codes.db')
 conn.row_factory = sqlite3.Row
 db = conn.cursor()
+
+
+def return_country(db_conn, column):
+
+    db_conn.execute("SELECT * FROM country_code WHERE country = (?)", (column.title(), ))
+    _country = db_conn.fetchone()
+
+    if _country is None:
+        click.secho('Country does not exist. Perhaps, write the full name.', fg='red')
+        return
+    return _country
 
 
 @click.group()
@@ -17,15 +29,6 @@ def cli1():
 def cli2():
     """Others"""
     pass
-
-
-def return_country(db_conn, column):
-    db_conn.execute("SELECT * FROM country_code WHERE country = (?)", (column.title(), ))
-    _country = db_conn.fetchone()
-    if _country is None:
-        click.secho('Country does not exist. Perhaps, write the full name.', fg='red')
-        return
-    return _country
 
 
 @cli1.command()
