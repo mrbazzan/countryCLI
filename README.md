@@ -14,13 +14,19 @@ Windows:
 FOR HTTPS;
 
 ```shell script
-> pip install git+https://github.com/mrbazzan/countryCLI
+- git clone https://github.com/mrbazzan/countryCLI
 ```
 
-FOR SSH;
+```shell script
+- cd countryCLI
+```
 
 ```shell script
-> pip install git+ssh://git@github.com/mrbazzan/countryCLI.git
+- python -m venv venv/
+- cd venv/scripts
+- activate
+- cd ../..
+- pip install -r requirements.txt
 ```
 
 ## Using the CLI
@@ -30,20 +36,20 @@ The CLI can be invoked with the `countrycli` command.
 To get the help page:
 
 ```shell script
-> countrycli --help
+> py countrycli --help
 ```
 
 
 ```shell script
-> countrycli info `countryname`
+> py countrycli info `countryname`
 ```
 
 ```shell script
-> countrycli short `countryname`
+> py countrycli short `countryname`
 ```
 
 ```shell script
-> countrycli short `countryname` -ab=3
+> py countrycli short `countryname` -ab=3
 ```
 
 ## Feedback
