@@ -7,7 +7,7 @@ Get information about a country. ``CountryCli`` is a command line application th
 
 
 ## INSTALL
-CountryCli requires Python 3.7 and above
+CountryCli requires Python 3.7 and above.
 
 Windows:
 
