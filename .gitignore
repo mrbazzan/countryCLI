@@ -1,13 +1,7 @@
 
-populateDB/
+.idea/
 
 venv/
-
-pyproject.toml
-setup.py
-output.csv
-
-example_info.txt
 
 __pycache__/
 *pyc
