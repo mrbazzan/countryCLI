@@ -51,7 +51,7 @@ To get the help page:
 If you find a bug, please [file an issue](https://github.com/mrbazzan/pynation/issues).
 
 If you have feature requests, please [file an issue](https://github.com/mrbazzan/pynation/issues)
-and use the appropriate label.
+and use the appropriate label
 
 ## How to Contribute
 
