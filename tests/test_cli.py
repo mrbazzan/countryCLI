@@ -1,14 +1,14 @@
 
 import pytest
-from pynation.cli import cli, return_country
+from pynation.cli import cli, return_country_abbrev
 from click.testing import CliRunner
 
 runner = CliRunner()
 
 
 def test_return_country():
-    assert return_country('united s**') is None
-    assert return_country('united states of America') == ('US', 'USA', 840)
+    assert return_country_abbrev('united s**') is None
+    assert return_country_abbrev('united states of America') == ('US', 'USA', 840)
 
 
 class TestCli:
@@ -16,7 +16,7 @@ class TestCli:
         result = runner.invoke(cli, ['info', 'Nigeria'])
         assert result.exit_code == 0
         assert "Information about" in result.output
-        assert "NGA" in result.output
+        assert "Currency Name" in result.output
         assert 'NG' in result.output
 
     def test_info_wrong_country(self):
