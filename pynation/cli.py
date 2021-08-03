@@ -3,7 +3,6 @@ from pynation.data import country_data, currency_data
 
 
 def return_country_abbrev(column):
-
     _country = country_data.get(column.title(), None)
     if _country is None:
         return
@@ -11,7 +10,6 @@ def return_country_abbrev(column):
 
 
 def return_country_currency(column):
-
     _currency = currency_data.get(column.title(), None)
     if _currency is None:
         return
@@ -59,7 +57,6 @@ def info(country_name):
               help="")
 @click.argument('country_name')
 def short_code(country_name, abbreviate):
-
     """Returns the short abbreviation code of a country.
     It can be two digit or three digit country code.
     The default is two digit."""
@@ -70,6 +67,18 @@ def short_code(country_name, abbreviate):
         click.secho('The {0} digit country code for {1} is "{2}"'.format(abbreviate, country_name, country[value]),
                     fg="green")
 
+
+@cli1.command()
+@click.argument('country_name')
+def currency(country_name):
+    """Gives information about the currency of a country"""
+    _data = return_country_currency(country_name)
+    if _data:
+        _, currency_name, code, symbol = _data
+    else:
+        return click.secho('Country does not exist. Perhaps, write the full name?', fg='red')
+
+    click.secho("The currency is: {}({})".format(currency_name, symbol), fg='green')
 
 
 cli = click.CommandCollection(sources=[cli1, cli2])

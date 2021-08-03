@@ -37,3 +37,11 @@ class TestCli:
 
         result1 = runner.invoke(cli, ['short', 'NIGERIA', '-ab=4'])
         assert 'Error' in result1.output
+
+    def test_currency_nigeria(self):
+        result = runner.invoke(cli, ['currency', 'nigeria'])
+        assert '(₦)' in result.output
+
+    def test_currency_wrong_country(self):
+        result = runner.invoke(cli, ['info', 'eeieidjjdl'])
+        assert 'Country does not exist' in result.output

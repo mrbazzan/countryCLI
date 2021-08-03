@@ -3,6 +3,8 @@
 
 [![PyPI Version](https://img.shields.io/pypi/v/pynation)](https://pypi.org/project/pynation)
 ![GitHub](https://img.shields.io/github/license/mrbazzan/pynation)
+[![PyPI Publish](https://github.com/mrbazzan/pynation/actions/workflows/b_python-publish.yml/badge.svg?branch=v0.2)](https://github.com/mrbazzan/pynation/actions/workflows/b_python-publish.yml)
+[![Tests](https://github.com/mrbazzan/pynation/actions/workflows/a_run-test.yml/badge.svg?branch=main)](https://github.com/mrbazzan/pynation/actions/workflows/a_run-test.yml)
 
 Get information about a country. ``pynation`` is a command line application that helps users get quick information about a country.
 
