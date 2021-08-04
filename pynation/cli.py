@@ -68,17 +68,23 @@ def short_code(country_name, abbreviate):
                     fg="green")
 
 
-@cli1.command()
+@cli2.command()
+@click.option('--code/--no-code', default=False, help="Find the currency code for a country")
 @click.argument('country_name')
-def currency(country_name):
+def currency(code, country_name):
     """Gives information about the currency of a country"""
+
     _data = return_country_currency(country_name)
+
     if _data:
-        _, currency_name, code, symbol = _data
+        _, currency_name, the_code, symbol = _data
     else:
         return click.secho('Country does not exist. Perhaps, write the full name?', fg='red')
 
     click.secho("The currency is: {}({})".format(currency_name, symbol), fg='green')
+
+    if code:
+        click.secho("The currency short code is: {}".format(the_code), fg='green')
 
 
 cli = click.CommandCollection(sources=[cli1, cli2])

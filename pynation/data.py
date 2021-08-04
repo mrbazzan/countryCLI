@@ -252,7 +252,7 @@ country_data = {
 }
 
 currency_data = {
-    'Afghanistan': ('Asia', 'Afghanistani Afghani', 'AFN', '؋'),
+    'Afghanistan': ('Asia', 'Afghanistani Afghani', 'AFN', '௹'),
     'Albania': ('Europe', 'Albanian Lek', 'ALL', 'Lek'),
     'Algeria': ('Africa', 'Algerian Dinar', 'DZD', 'دج'),
     'Andorra': ('Europe', 'European Euro', 'EUR', '€'),
@@ -480,19 +480,3 @@ currency_data = {
     'Zambia': ('Africa', 'Zambian Kwacha', 'ZMK', 'ZK'),
     'Zimbabwe': ('Africa', 'Zimbabwean Dollar', 'ZWD', '$')
 }
-
-# a = list(country_data)
-# b = list(currency_data)
-#
-# list_b = []
-# for i in b:
-#     if i not in a:
-#         list_b.append(i)
-#
-# list_a = []
-# for i in a:
-#     if i not in b:
-#         list_a.append(i)
-#
-# print(list_a)
-# print(list_b)
