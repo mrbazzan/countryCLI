@@ -23,13 +23,13 @@ class TestCli:
         result = runner.invoke(cli, ['info', 'eeieidjjdl'])
         assert 'Country does not exist' in result.output
     
-    def test_info_two_digit(self):
+    def test_short_two_digit(self):
         result = runner.invoke(cli, ['short', 'Nigeria'])
         assert result.exit_code == 0
         assert "NGA" not in result.output
         assert 'NG' in result.output
     
-    def test_info_three_digit(self):
+    def test_short_three_digit(self):
         result = runner.invoke(cli, ['short', 'Nigeria', '-ab=3'])
         assert result.exit_code == 0
         assert "NGA" in result.output
