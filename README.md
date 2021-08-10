@@ -8,6 +8,7 @@
 
 Get information about a country. ``pynation`` is a command line application that helps users get quick information about a country.
 
+Sometimes, people need quick info about a country, this application provides information like Alpha-2 code, currency, states in a country et.c.</p>
 
 ## INSTALL
 PyNation requires Python 3.7 and above
