@@ -48,3 +48,6 @@ class TestCli:
     def test_currency_code_option(self):
         result = self.runner.invoke(cli, ['currency', 'NIGERIA', '--code'])
         assert 'NGN' in result.output
+
+    def test_calling_code(self):
+        assert True
