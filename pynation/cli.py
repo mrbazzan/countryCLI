@@ -1,20 +1,13 @@
+
 import click
-from pynation.data import country_data, currency_data
+from pynation.data import country_data, currency_data, country_calling_code
 
 
-def return_country_abbrev(column):
-    _country = country_data.get(column.title(), None)
+def return_country(data_source, column):
+    _country = data_source.get(column.title(), None)
     if _country is None:
         return
     return _country
-
-
-def return_country_currency(column):
-    _currency = currency_data.get(column.title(), None)
-    if _currency is None:
-        return
-
-    return _currency
 
 
 @click.group()
@@ -23,35 +16,37 @@ def cli1():
     pass
 
 
-@click.group()
-def cli2():
-    """Others"""
-    pass
-
-
 @cli1.command()
 @click.argument('country_name')
 def info(country_name):
     """Brief information about a country."""
 
-    country = return_country_abbrev(country_name)
-    currency = return_country_currency(country_name)
+    country = return_country(country_data, country_name)
+    currency = return_country(currency_data, country_name)
+    calling_code = return_country(country_calling_code, country_name)
 
-    if currency is None and country is None:
+    if currency is None and country is None and calling_code is None:
         return click.secho('Country does not exist. Perhaps, write the full name?', fg='red')
 
     curr_name, curr_symbol, continent = '-' if country is None else currency[1], currency[3], currency[0]
     alpha2 = country[0] if country is not None else '-'
+    call_code = calling_code[0] if country is not None else '-'
 
     click.echo(click.style(
         "\nInformation about {}:\n"
         "  - Continent: {}\n"
+        "  - Calling-Code: +({})\n"
         "  - Two digit abbreviation: {}\n"
-        "  - Currency Name and Symbol: {}({})\n".format(country_name, continent, alpha2, curr_name, curr_symbol)
+        "  - Currency Name and Symbol: {}({})\n".format(country_name,
+                                                        continent,
+                                                        call_code,
+                                                        alpha2,
+                                                        curr_name,
+                                                        curr_symbol)
         , fg='green'))
 
 
-@cli2.command('short')
+@cli1.command('short')
 @click.option('--abbreviate', '-ab', default='2', show_default=True,
               type=click.Choice(['2', '3']),
               help="")
@@ -62,19 +57,19 @@ def short_code(country_name, abbreviate):
     The default is two digit."""
 
     value = 0 if abbreviate == '2' else 1
-    country = return_country_abbrev(country_name)
+    country = return_country(country_data, country_name)
     if country:
         click.secho('The {0} digit country code for {1} is "{2}"'.format(abbreviate, country_name, country[value]),
                     fg="green")
 
 
-@cli2.command()
+@cli1.command('currency')
 @click.option('--code/--no-code', default=False, help="Find the currency code for a country")
 @click.argument('country_name')
-def currency(code, country_name):
+def country_currency(code, country_name):
     """Gives information about the currency of a country"""
 
-    _data = return_country_currency(country_name)
+    _data = return_country(currency_data, country_name)
 
     if _data:
         _, currency_name, the_code, symbol = _data
@@ -87,4 +82,8 @@ def currency(code, country_name):
         click.secho("The currency short code is: {}".format(the_code), fg='green')
 
 
-cli = click.CommandCollection(sources=[cli1, cli2])
+@cli1.command('call')
+def country_call_code():
+    """Gives information about the calling code of a country"""
+    pass
+
