@@ -35,6 +35,7 @@ To get the help page:
 ```shell script
 > pynation --help
 ```
+![Example](/assets/help.gif)
 
 
 ```shell script

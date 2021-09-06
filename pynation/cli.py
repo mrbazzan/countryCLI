@@ -84,6 +84,6 @@ def country_currency(code, country_name):
 
 @cli1.command('call')
 def country_call_code():
-    """Gives information about the calling code of a country"""
+    """Get information about the calling code of a country"""
     pass
 
