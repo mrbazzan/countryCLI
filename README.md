@@ -41,14 +41,15 @@ To get the help page:
 ```shell script
 > pynation info `countryname`
 ```
+![Example](/assets/info.gif)
+
 
 ```shell script
 > pynation short `countryname`
-```
-
-```shell script
 > pynation short `countryname` -ab=3
 ```
+![Example](/assets/short.gif) ![Example](/assets/long.gif)
+
 
 ## Feedback
 
