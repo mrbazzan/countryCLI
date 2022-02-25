@@ -26,7 +26,7 @@ Windows:
 ```
 
 
-## Using the CLI
+## Using the CLI application
 
 The CLI can be invoked with the `pynation` command.
 

@@ -82,7 +82,7 @@ def country_currency(code, country_name):
         click.secho("The currency short code is: {}".format(the_code), fg='green')
 
 
-@cli1.command('call')
+@cli1.command('call', hidden=True)
 def country_call_code():
     """Get information about the calling code of a country"""
     pass
