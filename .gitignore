@@ -1,5 +1,6 @@
 
 .idea/
+.vscode/
 
 venv/
 
@@ -7,6 +8,5 @@ __pycache__/
 *pyc
 
 .pytest_cache/
-misc.txt
 
 dist/
