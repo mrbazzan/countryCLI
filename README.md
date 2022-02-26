@@ -51,6 +51,42 @@ To get the help page:
 ![Example](/assets/short.gif) ![Example](/assets/long.gif)
 
 
+## Hacking
+
+If you want to edit the source code:
+- Clone the repository
+
+- Create a virtual environment
+```        
+    python3 -m venv venv/
+```
+
+- Activate the virtual environment
+  - For Linux
+    ```
+    source venv/bin/activate
+    ```
+  - For Windows CMD
+  ```
+  cd venv/Scripts
+  activate
+  ```
+
+- Upgrade the Pip version <**very important**>
+```        
+    pip install -U pip
+```
+
+- Install the package in editable mode `-e/--editable`
+with the "dev" extra included
+```        
+    pip install -e '.[dev]'
+```
+
+This installs `pynation` from the source directory and changes
+will be immediately reflected. It also installs extra development tools such as `pytest`
+
+
 ## Feedback
 
 If you find a bug, please [file an issue](https://github.com/mrbazzan/pynation/issues).
