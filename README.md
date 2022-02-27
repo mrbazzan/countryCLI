@@ -39,6 +39,7 @@ To get the help page:
 
 
 ```shell script
+> pynation `countryname`
 > pynation info `countryname`
 ```
 ![Example](/assets/info.gif)
