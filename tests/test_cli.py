@@ -23,10 +23,21 @@ class TestCli:
         assert "Currency Name" in result.output
         assert "SO" in result.output
 
-    def test_info_wrong_country(self):
+    def test_wrong_country(self):
         result = self.runner.invoke(cli, ['eeieidjjdl'])
         assert 'Country does not exist' in result.output
-    
+
+    def test_info_correct_country(self):
+        result = self.runner.invoke(cli, ['info', 'Nigeria'])
+        assert result.exit_code == 0
+        assert "Information about" in result.output
+        assert "Currency Name" in result.output
+        assert 'NG' in result.output
+
+    def test_info_wrong_country(self):
+        result = self.runner.invoke(cli, ['info', 'eeieidjjdl'])
+        assert 'Country does not exist' in result.output
+
     def test_short_two_digit(self):
         result = self.runner.invoke(cli, ['short', 'Nigeria'])
         assert result.exit_code == 0

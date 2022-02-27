@@ -14,7 +14,7 @@ class DefaultCommand(Group):
             def new_decorator(f):
                 cmd = decorator(f)
                 self.default_command = cmd.name
-                cmd.hidden = True  # Hide "->" from the command line
+                # cmd.hidden = True  # Hide "->" from the command line
                 return cmd
             return new_decorator
 
