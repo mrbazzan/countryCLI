@@ -1,22 +1,16 @@
 
 import click
 from pynation.data import country_data, currency_data, country_calling_code
+from pynation.utils import return_country, DefaultCommand
 
 
-def return_country(data_source, column):
-    _country = data_source.get(column.title(), None)
-    if _country is None:
-        return
-    return _country
-
-
-@click.group()
+@click.group(cls=DefaultCommand)
 def cli1():
     """Gives information about a country"""
     pass
 
 
-@cli1.command()
+@cli1.command(default_command=True)
 @click.argument('country_name')
 def info(country_name):
     """Brief information about a country."""
@@ -86,4 +80,3 @@ def country_currency(code, country_name):
 def country_call_code():
     """Get information about the calling code of a country"""
     pass
-
