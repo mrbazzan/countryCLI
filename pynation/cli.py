@@ -83,6 +83,7 @@ def country_call_code(country_name):
 
     _data = return_country(country_calling_code, country_name)
     if _data:
-        return click.secho("The calling code for \"{}\" is +{}".format(country_name.title(), _data[0]), fg="green")
+        call_code = " or".join(_data[0].split(",")) if len(_data[0]) > 1 else _data[0]
+        return click.secho("The calling code for \"{}\" is +{}".format(country_name.title(), call_code), fg="green")
 
     error()
