@@ -68,5 +68,3 @@ class TestCli:
     def test_multiple_calling_code(self):
         result = self.runner.invoke(cli, ['call', 'Puerto Rico'])
         assert '+1-787 or ' in result.output
-
-# TODO: Write test for `error` function

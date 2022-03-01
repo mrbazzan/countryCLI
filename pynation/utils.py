@@ -35,5 +35,5 @@ def return_country(data_source, column):
         return _country
 
 
-def error():
-    return click.secho("Country does not exist. Perhaps, write the full name?", fg="red")
+def error_message():
+    click.secho("Country does not exist. Perhaps, write the full name?", fg="red")

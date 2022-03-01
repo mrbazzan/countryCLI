@@ -1,7 +1,7 @@
 
 import click
 from pynation.data import country_data, currency_data, country_calling_code
-from pynation.utils import return_country, DefaultCommand, error
+from pynation.utils import return_country, DefaultCommand, error_message
 
 
 @click.group(cls=DefaultCommand)
@@ -20,7 +20,7 @@ def info(country_name):
     calling_code = return_country(country_calling_code, country_name)
 
     if currency is None and country is None and calling_code is None:
-        error()
+        return error_message()
 
     curr_name, curr_symbol, continent = '-' if country is None else currency[1], currency[3], currency[0]
     alpha2 = country[0] if country is not None else '-'
@@ -68,7 +68,7 @@ def country_currency(code, country_name):
     if _data:
         _, currency_name, the_code, symbol = _data
     else:
-        error()
+        return error_message()
 
     click.secho("The currency is: {}({})".format(currency_name, symbol), fg='green')
 
@@ -86,4 +86,4 @@ def country_call_code(country_name):
         call_code = " or".join(_data[0].split(",")) if len(_data[0]) > 1 else _data[0]
         return click.secho("The calling code for \"{}\" is +{}".format(country_name.title(), call_code), fg="green")
 
-    error()
+    return error_message()
