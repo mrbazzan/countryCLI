@@ -1,7 +1,7 @@
 
 import click
 from pynation.data import country_data, currency_data, country_calling_code
-from pynation.utils import return_country, DefaultCommand
+from pynation.utils import return_country, DefaultCommand, error
 
 
 @click.group(cls=DefaultCommand)
@@ -20,7 +20,7 @@ def info(country_name):
     calling_code = return_country(country_calling_code, country_name)
 
     if currency is None and country is None and calling_code is None:
-        return click.secho('Country does not exist. Perhaps, write the full name?', fg='red')
+        error()
 
     curr_name, curr_symbol, continent = '-' if country is None else currency[1], currency[3], currency[0]
     alpha2 = country[0] if country is not None else '-'
@@ -68,7 +68,7 @@ def country_currency(code, country_name):
     if _data:
         _, currency_name, the_code, symbol = _data
     else:
-        return click.secho('Country does not exist. Perhaps, write the full name?', fg='red')
+        error()
 
     click.secho("The currency is: {}({})".format(currency_name, symbol), fg='green')
 
@@ -76,7 +76,13 @@ def country_currency(code, country_name):
         click.secho("The currency short code is: {}".format(the_code), fg='green')
 
 
-@cli1.command('call', hidden=True)
-def country_call_code():
+@cli1.command("call")
+@click.argument("country_name")
+def country_call_code(country_name):
     """Get information about the calling code of a country"""
-    pass
+
+    _data = return_country(country_calling_code, country_name)
+    if _data:
+        return click.secho("The calling code for \"{}\" is +{}".format(country_name.title(), _data[0]), fg="green")
+
+    error()

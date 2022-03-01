@@ -62,4 +62,8 @@ class TestCli:
         assert 'NGN' in result.output
 
     def test_calling_code(self):
-        assert True
+        result = self.runner.invoke(cli, ['call', 'Afghanistan'])
+        assert '93' in result.output
+
+
+# TODO: Write test for `error` function
