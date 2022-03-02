@@ -19,7 +19,7 @@ def info(country_name):
     currency = return_country(currency_data, country_name)
     calling_code = return_country(country_calling_code, country_name)
 
-    if currency is None and country is None and calling_code is None:
+    if (currency is None) and (country is None) and (calling_code is None):
         return error_message()
 
     curr_name, curr_symbol, continent = '-' if country is None else currency[1], currency[3], currency[0]
@@ -50,11 +50,12 @@ def short_code(country_name, abbreviate):
     It can be two digit or three digit country code.
     The default is two digit."""
 
-    value = 0 if abbreviate == '2' else 1
+    value = 0 if (abbreviate == '2') else 1
     country = return_country(country_data, country_name)
     if country:
-        click.secho('The {0} digit country code for {1} is "{2}"'.format(abbreviate, country_name, country[value]),
-                    fg="green")
+        return click.secho('The {0} digit country code for {1} is "{2}"'
+                           .format(abbreviate, country_name, country[value]), fg="green")
+    return error_message()
 
 
 @cli1.command('currency')
@@ -70,10 +71,10 @@ def country_currency(code, country_name):
     else:
         return error_message()
 
-    click.secho("The currency is: {}({})".format(currency_name, symbol), fg='green')
-
     if code:
-        click.secho("The currency short code is: {}".format(the_code), fg='green')
+        return click.secho("The currency short code is: {}".format(the_code), fg='green')
+
+    return click.secho("The currency is: {}({})".format(currency_name, symbol), fg='green')
 
 
 @cli1.command("call")
