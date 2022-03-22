@@ -4,6 +4,7 @@ from pynation.data import country_data, currency_data, country_calling_code
 from pynation.utils import return_country, DefaultCommand, error_message
 
 
+@click.version_option()
 @click.group(cls=DefaultCommand)
 def cli1():
     """Gives information about a country"""
