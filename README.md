@@ -102,3 +102,7 @@ Please **raise an issue** before making a PR, so that the issue and implementati
 Please make PR's on a **new branch**, and _not_ on main. 
 
 Please **include tests** for any PR's that include code (unless current tests cover your code contribution).
+
+## Source of data
+
+PyNation's data is scraped from the web, and the scrapers are stored at [url](https://github.com/mrbazzan/populate_pynation).
