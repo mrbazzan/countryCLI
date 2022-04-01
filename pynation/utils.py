@@ -24,7 +24,7 @@ class DefaultCommand(click.Group):
         try:
             return super(DefaultCommand, self).resolve_command(ctx, args)
         except click.UsageError:
-            # Since "country_name" is not a command name, we want to pass "->"
+            # Since "country_name" is not a command name, we want to pass "info"
             args.insert(0, self.default_command)
             return super(DefaultCommand, self).resolve_command(ctx, args)
 
